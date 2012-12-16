@@ -2,10 +2,10 @@
 var param1;
 var param2;
 var param3;
-var selectedwine;
-var subpar1;
-var subpar2;
-var query_string;
+var selectedwine = '';
+var subpar1 = '';
+var subpar2 = '';
+var query_string = '';
 function getdata() {
     var currentNav = $('a.ui-btn-active').text();
     // Do fancy things with it
@@ -38,13 +38,13 @@ function SortByName(x, y) {
 }
 // When the user views the Track Info page
 $('#BindWines').live('pageshow', function() {
-    //alert("Enter");
+$('#completeWines li').remove();
     jQuery.getJSON("Js/newwinecurrent.json", function(data) {
 
-        $('#completeWines li').remove();
+        
         wines = data.rows;
         if (query_string[0] == "Price") {
-            alert("Price -2");
+            alert("Price");
             wines.sort(SortByPrice);
         }
         else if (query_string[0] == "Rating") {
@@ -52,7 +52,7 @@ $('#BindWines').live('pageshow', function() {
             wines.sort(SortByRating);
         }
         else {
-            //alert("name");
+            alert("name");
             wines.sort(SortByName);
         }
         $.each(wines, function(index, wine) {
