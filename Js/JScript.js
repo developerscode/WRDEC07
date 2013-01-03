@@ -14,7 +14,7 @@ function getdata() {
      
      param1 = query_string[1];
      param2 = query_string[2];
-    // alert(query_string[0]);
+    //alert(query_string[0]);
     //alert(param1);
     //subpar1 = param1.split("&");
     subpar1 = param1.charAt(2) + param1.charAt(3)
@@ -29,7 +29,7 @@ function SortByRating(x, y) {
 }
 function SortByPrice(x, y) { 
       //  alert("Price-1");
-        return y.price - x.price;
+    return parseFloat(y.price) - (x.price);
 }
 function SortByName(x, y) {     
        // alert("Name");
@@ -40,11 +40,10 @@ function SortByName(x, y) {
 $('#BindWines').live('pageshow', function() {
 $('#completeWines li').remove();
     jQuery.getJSON("Js/newwinecurrent.json", function(data) {
-
         
         wines = data.rows;
         if (query_string[0] == "Price") {
-            alert("Price");
+            //alert("Price");
             wines.sort(SortByPrice);
         }
         else if (query_string[0] == "Rating") {
@@ -52,7 +51,7 @@ $('#completeWines li').remove();
             wines.sort(SortByRating);
         }
         else {
-            alert("name");
+            //alert("name");
             wines.sort(SortByName);
         }
         $.each(wines, function(index, wine) {
