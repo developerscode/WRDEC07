@@ -26,16 +26,16 @@ function getdata() {
 function SortByRating(x, y) {
   //  alert("reviewstars");
     return ((y.reviewstars == x.reviewstars) ? 0 : ((y.reviewstars > x.reviewstars) ? 1 : -1));
-}
+    }
 function SortByPrice(x, y) { 
       //  alert("Price-1");
     return parseFloat(y.price) - (x.price);
-}
+    }
 function SortByName(x, y) {     
        // alert("Name");
         return ((x.winename == y.winename) ? 0 : ((x.winename > y.winename) ? 1 : -1));
- 
-}
+    }
+
 // When the user views the Track Info page
 $('#BindWines').live('pageshow', function() {
 $('#completeWines li').remove();
@@ -65,11 +65,10 @@ $('#completeWines li').remove();
             $('#completeWines').listview('refresh');
         });
     });
-
 });
 
 $('#completeWines li').live('vclick', function() {
-    //alert("Works"); // id of clicked li by directly accessing DOMElement property
+    alert("Works"); // id of clicked li by directly accessing DOMElement property
     selectedwine = $(this).text();
     //alert(selectedwine);
 
@@ -120,8 +119,8 @@ $('#completeWines li').live('vclick', function() {
                 '<span style="color:#336699">Review Date</span> : ' + wine.reviewdate + '<Br />' +
                 '<span style="color:#336699">Food Pairing </span>: ' + wine.foodpairing + '<Br />' +
                 '<span style="color:#336699">Varietal </span>: ' + wine.varietal + '<Br />' +
-                '<span style="color:#336699">Producer : ' + wine.producer + '<Br />' +
-                '<span style="color:#336699">Review Text : ' + wine.reviewtext + '<Br />' +
+                '<span style="color:#336699">Producer </span>: ' + wine.producer + '<Br />' +
+                '<span style="color:#336699">Review Text </span>: ' + wine.reviewtext + '<Br />' +
                 '<span style="color:#336699">Vintages </span>: ' + wine.vintages + '<Br />' +
                 '<span style="color:#336699">Alcohol</span> : ' + wine.alcohol + '<Br />' +
                 '<span style="color:#336699">Vintage</span> : ' + wine.vintage + '<Br />' +
