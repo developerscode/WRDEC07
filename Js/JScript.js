@@ -68,7 +68,7 @@ $('#completeWines li').remove();
 });
 
 $('#completeWines li').live('vclick', function() {
-    alert("Works"); // id of clicked li by directly accessing DOMElement property
+    //alert("Works"); // id of clicked li by directly accessing DOMElement property
     selectedwine = $(this).text();
     //alert(selectedwine);
 
