@@ -37,35 +37,35 @@ function SortByName(x, y) {
     }
 
 // When the user views the Track Info page
-$('#BindWines').live('pageshow', function() {
-$('#completeWines li').remove();
-    jQuery.getJSON("Js/newwinecurrent.json", function(data) {
-        
-        wines = data.rows;
-        if (query_string[0] == "Price") {
-            //alert("Price");
-            wines.sort(SortByPrice);
-        }
-        else if (query_string[0] == "Rating") {
-            //alert("reviewstars");
-            wines.sort(SortByRating);
-        }
-        else {
-            //alert("name");
-            wines.sort(SortByName);
-        }
-        $.each(wines, function(index, wine) {
-            if (parseInt(wine.price) >= parseInt(subpar1) && wine.reviewstars >= subpar2) {                
-                $('#completeWines').append('<li><span style="font-size:Medium; font-family:Verdana; color:Black;">ID:' + wine.uniqueid + '.</span><Br />' +
+    $('#BindWines').live('pageshow', function() {
+        $('#completeWines li').remove();
+        jQuery.getJSON("Js/newwinecurrent.json", function(data) {
+
+            wines = data.rows;
+            if (query_string[0] == "Rating") {
+                //alert("reviewstars");
+                wines.sort(SortByRating);
+            }
+            else if (query_string[0] == "Name") {
+                //alert("name");
+                wines.sort(SortByName);
+            }
+            else {
+                //alert("Price");
+                wines.sort(SortByPrice);
+            }
+            $.each(wines, function(index, wine) {
+                if (parseInt(wine.price) >= parseInt(subpar1) && wine.reviewstars >= subpar2) {
+                    $('#completeWines').append('<li><span style="font-size:Medium; font-family:Verdana; color:Black;">ID:' + wine.uniqueid + '.</span><Br />' +
                 '<span style="font-size:small; font-family:Verdana; color:Black;">Price :' + wine.price + '</span><Br />' +
                 '<span style="font-size:small; font-family:Verdana; color:Black;">Review Stars :' + wine.reviewstars + '</span><Br />' +
                 '<span style="font-size:small; font-family:Verdana; color:Black;">Review Text:' + wine.reviewtext + '</span><Br />' +
                 '</li>');
-            }
-            $('#completeWines').listview('refresh');
+                }
+                $('#completeWines').listview('refresh');
+            });
         });
     });
-});
 
 $('#completeWines li').live('vclick', function() {
     //alert("Works"); // id of clicked li by directly accessing DOMElement property
